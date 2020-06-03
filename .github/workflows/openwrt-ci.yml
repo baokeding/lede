@@ -42,6 +42,13 @@ jobs:
           sudo -E apt-get clean
 
           df -h
+      - name: 自定义插件主题。
+        run: |
+          cd package
+          mkdir openwrt-packages
+          cd openwrt-packages
+          git clone https://e.coding.net/Small_5/luci-app-adbyby-plus-special.git
+          git clone https://github.com/user1121114685/koolproxyR.git
 
       - name: Update feeds
         run: |
@@ -140,8 +147,8 @@ jobs:
           CONFIG_PACKAGE_luci-app-sfe=y
           CONFIG_PACKAGE_luci-app-xlnetacc=y
           CONFIG_PACKAGE_luci-app-syncdial=y
-          # CONFIG_PACKAGE_koolproxyR=y
-          # CONFIG_PACKAGE_luci-app-adbyby-plus-special=y
+          CONFIG_PACKAGE_koolproxyR=y
+          CONFIG_PACKAGE_luci-app-adbyby-plus-special=y
           EOF
           # LuCI主题:
           cat >> .config <<EOF
